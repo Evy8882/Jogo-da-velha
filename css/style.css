@@ -1,0 +1,53 @@
+body{
+    font: normal 10pt arial;
+    background-color: rgb(8, 78, 99);
+    color: white;
+}
+
+header{
+    text-align: center;
+}
+
+section{
+    background-color: rgb(15, 165, 165);
+    width: 480px;
+    height: 480px;
+    margin:auto;
+    border-radius: 30px;
+    margin-top: 50px;
+    padding: 28px;
+}
+.line{
+    text-align: left;
+    min-height: 150px;
+    margin: 5px;
+}
+.box{
+    min-width: 140px;
+    min-height: 140px;
+    float: left;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px black solid;
+    font: normal 100px arial;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.box:hover{
+    background-color: rgb(77, 157, 204);
+}
+.clearButton{
+    text-align: center;
+}
+button{
+    color: white;
+    background-color: #00000030;
+    padding: 5px;
+    border-radius: 10px;
+}
+button:hover{
+    background-color: #00000090;
+    padding: 5px;
+}
