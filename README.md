@@ -10,3 +10,6 @@
 
 * <img height="32px" align="center" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" /> Javascript
 
+## Acessando:
+é possivel acessar através do link: <br>
+https://evy8882.github.io/Jogo-da-velha/
