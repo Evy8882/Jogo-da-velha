@@ -1,6 +1,7 @@
-let jogada = 'X'
+var jogada = 'X'
+var playing = true
 
-const inverterJogada = () => { if (jogada == 'X'){jogada = 'O'}else{jogada = 'X'} }
+const inverterJogada = () => {jogada == 'X' ? jogada = 'O' : jogada = 'X' }
 
 const tabuleiro = {
     //linha 1
@@ -54,14 +55,64 @@ const clearTable = () => {
     tabuleiro.box7 = '';
     tabuleiro.box8 = '';
     tabuleiro.box9 = '';
+    playing = true
     jogada = 'X'
+    alertBox.style.visibility = "hidden";
     updateTable()
 }
 
 const marcar = (id) => {
-    alterarCasa(id);
-    inverterJogada();
-    updateTable();
+    if (playing == 1){
+        alterarCasa(id);
+        inverterJogada();
+        updateTable();
+        winChecker();
+    }
 }
+
+const winAlert = (winner) => {
+    alertBox = document.querySelector(".alert");
+    alertBox.innerHTML = `${winner} ganhou`
+    alertBox.style.visibility = "visible";
+}
+
+const winChecker = () => {
+    if (
+        // Verificação horizontal:
+        (tabuleiro.box1 == 'X' && tabuleiro.box2 == 'X' && tabuleiro.box3 == 'X') ||
+        (tabuleiro.box4 == 'X' && tabuleiro.box5 == 'X' && tabuleiro.box6 == 'X') ||
+        (tabuleiro.box7 == 'X' && tabuleiro.box8 == 'X' && tabuleiro.box9 == 'X') ||
+        // Verificação vertical:
+        (tabuleiro.box1 == 'X' && tabuleiro.box4 == 'X' && tabuleiro.box7 == 'X') ||
+        (tabuleiro.box2 == 'X' && tabuleiro.box5 == 'X' && tabuleiro.box8 == 'X') ||
+        (tabuleiro.box3 == 'X' && tabuleiro.box6 == 'X' && tabuleiro.box9 == 'X') ||
+        // Verificação diagonal:
+        (tabuleiro.box1 == 'X' && tabuleiro.box5 == 'X' && tabuleiro.box9 == 'X') ||
+        (tabuleiro.box3 == 'X' && tabuleiro.box5 == 'X' && tabuleiro.box7 == 'X')
+    
+        ){
+        playing = false
+        winAlert("X")
+    }
+    if (
+        // Verificação horizontal:
+        (tabuleiro.box1 == 'O' && tabuleiro.box2 == 'O' && tabuleiro.box3 == 'O') ||
+        (tabuleiro.box4 == 'O' && tabuleiro.box5 == 'O' && tabuleiro.box6 == 'O') ||
+        (tabuleiro.box7 == 'O' && tabuleiro.box8 == 'O' && tabuleiro.box9 == 'O') ||
+        // Verificação vertical:
+        (tabuleiro.box1 == 'O' && tabuleiro.box4 == 'O' && tabuleiro.box7 == 'O') ||
+        (tabuleiro.box2 == 'O' && tabuleiro.box5 == 'O' && tabuleiro.box8 == 'O') ||
+        (tabuleiro.box3 == 'O' && tabuleiro.box6 == 'O' && tabuleiro.box9 == 'O') ||
+        // Verificação diagonal:
+        (tabuleiro.box1 == 'O' && tabuleiro.box5 == 'O' && tabuleiro.box9 == 'O') ||
+        (tabuleiro.box3 == 'O' && tabuleiro.box5 == 'O' && tabuleiro.box7 == 'O')
+    
+        ){
+        playing = false
+        winAlert("O")
+    }
+}
+
+
 
 updateTable()
